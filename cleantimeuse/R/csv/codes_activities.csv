@@ -1,0 +1,72 @@
+﻿MAIN,LABEL,DESC
+1,personal,Imputed personal or household care
+2,sleep,Sleep and naps
+3,sleep_imputed,Imputed sleep
+4,routine,"Wash, dress, care for self"
+5,meals_work,Meals at work or school
+6,meals_other,Meals or snacks in other places
+7,work_main,Paid work-main job (not at home)
+8,work_home,Paid work at home
+9,work_second,Second or other job not at home
+10,unpaid_work_for_income,Unpaid work to generate household income
+11,travel_for_work,Travel as a part of work
+12,breaks,Work breaks
+13,workplace_other,Other time at workplace
+14,looking_for_work,Look for work
+15,education,"Regular schooling, education"
+16,homework,Homework
+17,leisure_other,Leisure and other education or training
+18,cooking,"Food preparation, cooking"
+19,set_table,"Set table, wash/put away dishes"
+20,cleaning,Cleaning
+21,laundry,"Laundry, ironing, clothing repair"
+22,maintenance,"Maintain home/vehicle, including collect fuel"
+23,other_domestic,Other domestic work
+24,shopping,Purchase goods
+25,services,Consume personal care services
+26,services_other,Consume other services
+27,pets,Pet care (not walk dog)
+28,health,"Physical, medical child care"
+29,teaching,"Teach, help with homework"
+30,reading,"Read to, talk or play with child"
+31,child_care,"Supervise, accompany, other child care"
+32,adult_care,Adult care
+33,civic,"Voluntary, civic, organisational act"
+34,religion,Worship and religion
+35,leisure_general,General out-of-home leisure
+36,sports_event,Attend sporting event
+37,entertainment,"Cinema, theatre, opera, concert"
+38,events,"Other public event, venue"
+39,eating_out,"Restaurant, cafe, bar, pub"
+40,party,"Party, social event, gambling"
+41,nonhome_imputed,Imputed time away from home
+42,exercise,General sport or exercise
+43,walking,Walking
+44,cycling,Cycling
+45,recreation_other,Other outside recreation
+46,gardening,Gardening/pick mushrooms
+47,walking_dog,Walk dogs
+48,visiting,Receive or visit friends
+49,conversation,"Conversation (in person, phone)"
+50,in_home_social,Games (social and solitary)/other in-home social
+51,indoor_leisure,General indoor leisure
+52,arts,Art or music
+53,correspondence,Correspondence (not e-mail)
+54,crafts,"Knit, crafts or hobbies"
+55,relax,"Relax, think, do nothing"
+56,reading,Read
+57,music,Listen to music or other audio content
+58,radio,Listen to radio
+59,tv,"Watch tv, video, dvd, streamed film"
+60,games,Computer games
+61,internet,"E-mail, surf internet, computing"
+62,none,"No activity, imputed or recorded transport"
+63,travel_commute,Travel to/from work
+64,travel_education,Education travel
+65,travel_civic,Voluntary/civic/religious travel
+66,travel_care,Child/adult care travel
+67,travel_shopping,"Shop, person/hhld care travel"
+68,travel_other,Other travel
+69,none_recorded,No recorded activity
+99,na,Missing
+-9,na,Could not be created

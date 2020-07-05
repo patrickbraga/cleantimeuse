@@ -1,0 +1,30 @@
+Package: cleantimeuse
+Title: Clean and prepare IPUMS-MTUS data for statistical analysis
+Version: 1.0.0.0
+Authors@R: 
+    person(given = "Patrick",
+           family = "Braga",
+           role = c("aut", "cre"),
+           email = "patrickbraga@gsd.harvard.edu",
+           comment = "After late 2020, use pcb68@cornell.edu to contact")
+Description: This package automates loading and cleaning IPUMS Multinational Time Use Survey (MTUS) 
+            data for time use and travel analysis. IPUMS is a collection of research-oriented
+            census and survey data hosted by the University of Minnesota. The main data-cleaning 
+            function was based on a procedure written by Prof. Carole Voulgaris (Harvard University 
+            Graduate School of Design), and the remainder of the package was written by 
+            Patrick Braga (Harvard Master in Urban Planning '20).
+License: use_mit_license()
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0.9000
+Imports:
+  dplyr,
+  tidyverse,
+  survey,
+  srvyr,
+  ipumsr
+Suggests: 
+  knitr,
+  rmarkdown
+VignetteBuilder: knitr
