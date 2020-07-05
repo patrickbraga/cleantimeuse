@@ -1,8 +1,8 @@
 # Declare survey objects to fill in definition function below
-svy_workers <- NULL
-svy_all_home <- NULL
-svy_all_work <- NULL
-svy_part_home <- NULL
+# svy_workers <- NULL
+# svy_all_home <- NULL
+# svy_all_work <- NULL
+# svy_part_home <- NULL
 
 def_survey_objects <- function(workers) {
   #' Define survey objects for analysis and graphing
@@ -15,6 +15,12 @@ def_survey_objects <- function(workers) {
   #' @return `svy_all_home`: Workers who work entirely from home.
   #' @return `svy_all_work`: Workers who work entirely away from home.
   #' @return `svy_part_home`: Workers who work partly from home.
+
+  # Declare empty global survey objects
+  assign("svy_workers", NULL, envir=.GlobalEnv)
+  assign("svy_all_home", NULL, envir=.GlobalEnv)
+  assign("svy_all_work", NULL, envir=.GlobalEnv)
+  assign("svy_part_home", NULL, envir=.GlobalEnv)
 
   # Create survey design objects to incorporate survey weights
   # Below I used <<- because the svy_* variables

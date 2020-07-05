@@ -16,24 +16,24 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Overview
+## Overview
 The `cleantimeuse` package was developed as part of Urban Stack, a research group within the Laboratory for Design Technologies at the Harvard University Graduate School of Design. The aim of the package is to facilitate using time use survey data to study transport and travel behavior. It cleans and prepares data retrieved from the Multinational Time Use Study Extract System:
 
 Kimberly Fisher, Jonathan Gershuny, Sarah M. Flood, Daniel Backman and Sandra L. Hofferth. *Multinational Time Use Study Extract System*: Version 1.3 [dataset]. Minneapolis, MN: IPUMS, 2019. https://doi.org/10.18128/D062.V1.3
 
 This document describes the structure and contents of IPUMS MTUS, the source of the international and intertemporal data. The overview descriptions are followed by a tutorial showing how to download the data and how to use the `cleantimeuse` package with R.
 
-## What are IPUMS and MTUS?
+### What are IPUMS and MTUS?
 
 * **IPUMS** “provides census and survey data from around the world integrated across time and space.” Originally, it meant “Integrated Public Use Microdata” and is now a platform that allows access to time use, public health, geospatial, environmental, and census data from different countries and time periods. IPUMS is hosted by the University of Minnesota and is supported by other entities, including University College London and the University of Maryland.
 *	**MTUS** stands for Multinational Time Use Survey. It is one of three time use data sets available from IPUMS. MTUS can be accessed either via https://timeuse.ipums.org/ or https://www.mtusdata.org/mtus/ and you will need to create a free account to download data.
 
-## What data samples are available?
+### What data samples are available?
 MTUS offers samples from Austria, Bulgaria, Canada, Finland, France, Hungary, Israel, Italy, Netherlands, South Africa, South Korea, Spain, the United Kingdom, and the United States. Most countries only have one or two years of data available. A few have pre-2000 data. MTUS harmonizes data across countries’ independent time use studies to facilitate comparative analysis. Variables are all named the same, and measurements such as income are normalized into quartiles to make them more comparable.
 
 Descriptions of how the data were collected are available in a spreadsheet named **ipums_country_sample_comparison.xlsx** (in Taelor’s sandbox), which summarizes the Sample Descriptions on the IPUMS website.^[mtusdata.org/mtus/samples.shtml] The website also has lengthy codebook documents that describe the survey process in the original language^[mtusdata.org/mtus/source_documents.shtml]. 
 
-## How are the data structured?
+### How are the data structured?
 By default, data downloads will come with identifiers for individual respondents, household ID, and a “proposed” *survey weight*.^[For more information on why survey weights are important, see youtube.com/watch?v=8iMV7ei61IM or youtube.com/watch?v=SJRVxvdIc8s] Survey weights are inflation/deflation factors whose goal is to the sample data proportionately representative of the actual population. Depending on how the data were collected, it’s possible that one geography (e.g. the capital city) may have been overrepresented in the data relative to its actual proportion of the national population in real life. Functions from the survey package calculate different statistics taking these survey weights into account via so-called “complex survey objects” created by the as_survey_design function.
 
 Data are available in two primary structures: *by person* and *by activity*. This distinction is important depending on the question you are trying to answer. You should download data in both formats; it’s required for the data-cleaning functions and allows you as the researcher to answer different kinds of questions.
@@ -44,7 +44,7 @@ Data are available in two primary structures: *by person* and *by activity*. Thi
 
 Depending on the sample extract (i.e., the country and year being analyzed), the data may also indicate multitasking via SEC (secondary activity). However, my code currently ignores multitasking, so you will need to write new code to analyze that.
 
-# Using `cleantimeuse` package
+## Using the `cleantimeuse` package
 The `cleantimeuse` package, written originally for the Urban Stack research team at the Harvard Graduate School of Design, offers a suite of functions designed to make it easy to load and clean MTUS data for travel behavior research. The package can be loaded via the standard `library` command.
 
 ``` {r load package}
@@ -66,7 +66,7 @@ table_of_functions <- read.csv("example_data/mtus_table_of_functions.csv")
 knitr::kable(table_of_functions)
 ```
 
-# Downloading data
+## Downloading data
 1. Visit https://www.mtusdata.org/mtus/ and select "Get Data" under "Create an Extract."
 2. Navigate to "Select Samples" in the upper left and select any number of country/year combinations. Then click "Submit Sample Selections."
 3. Use the dropdown menus under "Select Variables" to choose the variables of interest. At the very least, beyond the pre-selected identifier (IDENT) and survey weight (PROPWT) variables, you should select the variables below. Any other variables for plotting or regression analysis will be the individual researcher's choice.
@@ -83,7 +83,7 @@ knitr::kable(table_of_functions)
 7. Select "Download .DAT" to download the .dat.gz file. Do not extract/unzip this file; move it directly to your working directory. Right-click "DDI" under "Codebook" and save it to your working directory as well.
 8. Repeat steps 4 through 7 to download the remaining type of data structure (either by-person or by-activity). You will need both for the mtus packages to work.
 
-# Preparing Data for Use
+## Preparing Data for Use
 If needed, set R’s working directory to the relevant location. Markdown knitting already sets the source directory as the working directory, though, so we don't need to run this line now.
 
 ``` {r}
@@ -112,7 +112,7 @@ by_activity_data <- mtus_init_raw_data("example_data/mtus_00016.xml")
 
 Note that we have `check=FALSE` turned on for the by-person data. This is because when I downloaded this data set, I deliberately omitted some of the variables that are required for the by-activity portion of the data. By setting `check=FALSE`, the computer won't check whether I have the minimum required variables. Otherwise, R indicates which variables are missing.
 
-# Using the prepared data
+## Using the prepared data
 The `mtus_init_countries()` procedure can create data objects in three scenarios:
 
 * for a single country-year sample (e.g. `"UK2014"`),
@@ -137,7 +137,7 @@ The MTUS functions also run a `check_valid_country()` function that confirms whe
 mtus_init_countries(by_activity_data, by_person_data, "FR2008")
 ```
 
-## Loading only by-activity data
+### Loading only by-activity data
 Sometimes we may want to filter solely by-activity data for a given country. To do this, we can use `mtus_init_countries()` and set `by_person_data = NULL`. Note that calling NULL here doesn't affect any by-person data loaded earlier. The result of the procedure will be a variable preceded by `a_` to indicate by-activity.
 
 ```{r init a_UK2014}
@@ -149,7 +149,7 @@ As before, we can initialize the by-activity data for all countries at once.
 mtus_init_countries(by_activity_data, NULL, "all")
 ```
 
-# Recoding data
+## Recoding data
 Most IPUMS data uses numeric levels to indicate different values for variables (e.g. the number 8 in the ELOC column means an activity was performed at home). In some situations it may be more useful for the researcher to work with words rather than numeric codes, however. There are two ways to recode data using the `cleantimeuse` package.
 
 First, users can recode activities and locations on the fly alongside the `mtus_init_countries` call, which uses pre-written CSV files with activity and location codes with their corresponding human-readable label.
@@ -170,7 +170,7 @@ read.csv("example_data/codes_locations.csv")
 
 In fact, when a user sets one of the `recode` options in `mtus_init_countries` to `TRUE`, the code effectively calls something like the following: `recoded_FR2009 <- mtus_recode(a_FR2009, "ELOC", "codes_locations.csv")`. Notice that unlike `mtus_init_countries` but like `mtus_init_raw_data`, `mtus_recode` *returns* a data object, so you must assign the output to a variable if you wish to store it. Alternatively, this also means that `mtus_recode` can be called within a tidyverse pipeline. 
 
-# Example plots using cleaned MTUS data
+## Example plots using cleaned MTUS data
 These example functions are also built into the `cleantimeuse` library and suggest the kinds of visualization that the package facilitates.
 
 ```{r sample plots, echo=FALSE}
@@ -198,7 +198,7 @@ mtus_init_countries(by_activity_data,
 mtus_density_ov(FR2009, NL2005)
 ```
 
-## Loading multiple countries
+### Loading multiple countries
 Suppose we want to load Spain, Finland, Hungary, and Korea data for 2009. We can create a character list of the countries we want, and use mtus_init_countries(…) -- note that this is plural, rather than mtus_load_country(…). And unlike mtus_load_country, the function doesn't have a return object, so we don't need to create individual variables ahead of time.
 
 ``` {r multiple countries}

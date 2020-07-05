@@ -23,7 +23,8 @@ Imports:
   tidyverse,
   survey,
   srvyr,
-  ipumsr
+  ipumsr,
+  ggplot2
 Suggests: 
   knitr,
   rmarkdown
