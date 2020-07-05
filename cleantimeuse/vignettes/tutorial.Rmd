@@ -1,0 +1,216 @@
+---
+title: "Using Multinational Time Use Survey (MTUS) Data with `cleantimeuse`"
+author: "Patrick Braga"
+date: "Last updated July 5, 2020"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Overview
+The `cleantimeuse` package was developed as part of Urban Stack, a research group within the Laboratory for Design Technologies at the Harvard University Graduate School of Design. The aim of the package is to facilitate using time use survey data to study transport and travel behavior. It cleans and prepares data retrieved from the Multinational Time Use Study Extract System:
+
+Kimberly Fisher, Jonathan Gershuny, Sarah M. Flood, Daniel Backman and Sandra L. Hofferth. *Multinational Time Use Study Extract System*: Version 1.3 [dataset]. Minneapolis, MN: IPUMS, 2019. https://doi.org/10.18128/D062.V1.3
+
+This document describes the structure and contents of IPUMS MTUS, the source of the international and intertemporal data. The overview descriptions are followed by a tutorial showing how to download the data and how to use the `cleantimeuse` package with R.
+
+## What are IPUMS and MTUS?
+
+* **IPUMS** “provides census and survey data from around the world integrated across time and space.” Originally, it meant “Integrated Public Use Microdata” and is now a platform that allows access to time use, public health, geospatial, environmental, and census data from different countries and time periods. IPUMS is hosted by the University of Minnesota and is supported by other entities, including University College London and the University of Maryland.
+*	**MTUS** stands for Multinational Time Use Survey. It is one of three time use data sets available from IPUMS. MTUS can be accessed either via https://timeuse.ipums.org/ or https://www.mtusdata.org/mtus/ and you will need to create a free account to download data.
+
+## What data samples are available?
+MTUS offers samples from Austria, Bulgaria, Canada, Finland, France, Hungary, Israel, Italy, Netherlands, South Africa, South Korea, Spain, the United Kingdom, and the United States. Most countries only have one or two years of data available. A few have pre-2000 data. MTUS harmonizes data across countries’ independent time use studies to facilitate comparative analysis. Variables are all named the same, and measurements such as income are normalized into quartiles to make them more comparable.
+
+Descriptions of how the data were collected are available in a spreadsheet named **ipums_country_sample_comparison.xlsx** (in Taelor’s sandbox), which summarizes the Sample Descriptions on the IPUMS website.^[mtusdata.org/mtus/samples.shtml] The website also has lengthy codebook documents that describe the survey process in the original language^[mtusdata.org/mtus/source_documents.shtml]. 
+
+## How are the data structured?
+By default, data downloads will come with identifiers for individual respondents, household ID, and a “proposed” *survey weight*.^[For more information on why survey weights are important, see youtube.com/watch?v=8iMV7ei61IM or youtube.com/watch?v=SJRVxvdIc8s] Survey weights are inflation/deflation factors whose goal is to the sample data proportionately representative of the actual population. Depending on how the data were collected, it’s possible that one geography (e.g. the capital city) may have been overrepresented in the data relative to its actual proportion of the national population in real life. Functions from the survey package calculate different statistics taking these survey weights into account via so-called “complex survey objects” created by the as_survey_design function.
+
+Data are available in two primary structures: *by person* and *by activity*. This distinction is important depending on the question you are trying to answer. You should download data in both formats; it’s required for the data-cleaning functions and allows you as the researcher to answer different kinds of questions.
+
+**By-person data** is useful for calculating total time spent on an activity on a per-day basis. Each row in the data frame is an individual person over the course of a day. By-person data frames answer questions such as: how many total minutes did an individual work, travel, and so on? In by-person data, the IPUMS activity variables all sum to 1,440 minutes (24 hours). A full list of ACT_* variables is available as a tab in IPUMS_activity_codes.xlsx
+
+**By-activity data** is useful for extracting counts of instances of activities across a day (e.g. how many trips did a person take?) and how long individuals spent on that activity. Each row is an activity that an individual performed; the MAIN column uses a code to identify the kind of activity (e.g. if MAIN == 63 then the person was commuting), and the TIME variable counts the number of minutes the person performed that activity. Note that the ACT_\* variables in by-activity data extracts still summarize total time spent on an activity.
+
+Depending on the sample extract (i.e., the country and year being analyzed), the data may also indicate multitasking via SEC (secondary activity). However, my code currently ignores multitasking, so you will need to write new code to analyze that.
+
+# Using `cleantimeuse` package
+The `cleantimeuse` package, written originally for the Urban Stack research team at the Harvard Graduate School of Design, offers a suite of functions designed to make it easy to load and clean MTUS data for travel behavior research. The package can be loaded via the standard `library` command.
+
+``` {r load package}
+library(cleantimeuse)
+```
+
+**Please note:** At some point in late June/early July 2020, the `ipumsr` package started issuing this error when using the built-in IPUMS `read_ipums_ddi` function: "`Error: Can’t combine ..1$val < character > and ..2$val < double >.`" IPUMS staff recognized the error in early July^[https://forum.ipums.org/t/error-in-r-data-read/3573/2] and suggested running the following lines to bypass the errors. Because I have already installed the development version of ipumsr locally, the lines are commented out here.
+
+``` {r bypass ipums error}
+if (!require(remotes)) install.packages("remotes")
+remotes::install_github("mnpopcenter/ipumsr")
+library(ipumsr) #this overrides the ipumsr call built into the `cleantimeuse` package
+```
+
+Below is a list of the primary user-facing functions and their associated internal functions. As with any other R package, users can obtain help and documentation with the `?` operator; the functions are documented in detail, and the user is encouraged to read the manual pages for the user-facing functions in particular.
+
+``` {r table of functions}
+table_of_functions <- read.csv("example_data/mtus_table_of_functions.csv")
+knitr::kable(table_of_functions)
+```
+
+# Downloading data
+1. Visit https://www.mtusdata.org/mtus/ and select "Get Data" under "Create an Extract."
+2. Navigate to "Select Samples" in the upper left and select any number of country/year combinations. Then click "Submit Sample Selections."
+3. Use the dropdown menus under "Select Variables" to choose the variables of interest. At the very least, beyond the pre-selected identifier (IDENT) and survey weight (PROPWT) variables, you should select the variables below. Any other variables for plotting or regression analysis will be the individual researcher's choice.
+  + HLDID (Person -- Technical Person) = household identifier
+  + AGE (Person -- Core Demographic) = respondent age, used to filter observations only to working-age adults
+  + TIME (Activity -- Episode Details) = the activity duration in minutes.
+  + ELOC (Activity -- Episode Details) = location of activity (01 = at home, 03 = at workplace, 08 = traveling).
+  + ACT_WORK (Time Use -- Activity Coding Structure) = total time in the day spent on working.
+  + MAIN (Activity -- Episode Details) = code for activity. Refer to **MTUS_activity_codes.xlsx** for a comprehensive list.
+  + SEC (Activity -- Episode Details) = code for second activity (useful for studying multitasking).
+4. Use "Change Data Structure" to choose either Rectangular/Person or Rectangular/Activity structures. 
+5. Select "View Cart" at the upper right, and then select "Create Data Extract" after confirming you have all the needed variables.
+6. Once the IPUMS servers have completed assembling the data into a downloadable file, you will receive an email notification. The data download will be available under the "My Data" page.
+7. Select "Download .DAT" to download the .dat.gz file. Do not extract/unzip this file; move it directly to your working directory. Right-click "DDI" under "Codebook" and save it to your working directory as well.
+8. Repeat steps 4 through 7 to download the remaining type of data structure (either by-person or by-activity). You will need both for the mtus packages to work.
+
+# Preparing Data for Use
+If needed, set R’s working directory to the relevant location. Markdown knitting already sets the source directory as the working directory, though, so we don't need to run this line now.
+
+``` {r}
+# setwd(getSrcDirectory()[1])
+```
+
+**Always load raw MTUS data first.**
+
+MTUS data is available in two formats: by person and by activity. To initialize a country, we need both. Here, I reference two files I downloaded locally and which are not included in the package repository. The mtus_00009 file contains by-activity data for most countries with post-2000 data, and mtus_00014 has by-person data for the same.
+
+The `mtus_init_raw_data` function prepares downloaded IPUMS data for use in R. On the IPUMS website, you should download both the *.dat.gz* file and the *.xml* codebook (see the next section on downloading data).
+
+First, here is an example of what happens if we didn't select all the minimum required variables from the IPUMS website.
+
+```{r load the data}
+by_person_data <- mtus_init_raw_data("example_data/mtus_00017.xml")
+```
+
+For now, it's actually ok that those variables are missing in the by-person data, so we can turn the checking feature off. We'll leave it on for by-activity data, though, because that's important.
+
+```{r load more}
+by_person_data <- mtus_init_raw_data("example_data/mtus_00017.xml", 
+                                     check = FALSE)
+by_activity_data <- mtus_init_raw_data("example_data/mtus_00016.xml")
+```
+
+Note that we have `check=FALSE` turned on for the by-person data. This is because when I downloaded this data set, I deliberately omitted some of the variables that are required for the by-activity portion of the data. By setting `check=FALSE`, the computer won't check whether I have the minimum required variables. Otherwise, R indicates which variables are missing.
+
+# Using the prepared data
+The `mtus_init_countries()` procedure can create data objects in three scenarios:
+
+* for a single country-year sample (e.g. `"UK2014"`),
+* for a character vector with multiple countries (e.g. `c("ZA2000", "ZA2010")` for South Africa),
+* or for ever unique country-year sample in the data file (by calling `"all"`).
+
+```{r mtus_init_countries}
+mtus_init_countries(by_activity_data, 
+                    by_person_data, 
+                    "UK2014")
+
+mtus_init_countries(by_activity_data, 
+                    by_person_data, 
+                    c("ZA2000","ZA2010"))
+
+mtus_init_countries(by_activity_data, by_person_data, "all")
+```
+
+The MTUS functions also run a `check_valid_country()` function that confirms whether the user's inputted country-year combination actually exists in the data set. For instance, there is no 2008 data for France, so if we try to load that, the function returns an error because there are no entries named "FR2008" in the column that identifies samples:
+
+```{r display error if country is not available}
+mtus_init_countries(by_activity_data, by_person_data, "FR2008")
+```
+
+## Loading only by-activity data
+Sometimes we may want to filter solely by-activity data for a given country. To do this, we can use `mtus_init_countries()` and set `by_person_data = NULL`. Note that calling NULL here doesn't affect any by-person data loaded earlier. The result of the procedure will be a variable preceded by `a_` to indicate by-activity.
+
+```{r init a_UK2014}
+mtus_init_countries(by_activity_data, NULL, "UK2014")
+```
+
+As before, we can initialize the by-activity data for all countries at once.
+``` {r init all by activity}
+mtus_init_countries(by_activity_data, NULL, "all")
+```
+
+# Recoding data
+Most IPUMS data uses numeric levels to indicate different values for variables (e.g. the number 8 in the ELOC column means an activity was performed at home). In some situations it may be more useful for the researcher to work with words rather than numeric codes, however. There are two ways to recode data using the `cleantimeuse` package.
+
+First, users can recode activities and locations on the fly alongside the `mtus_init_countries` call, which uses pre-written CSV files with activity and location codes with their corresponding human-readable label.
+
+``` {r recode on the fly}
+mtus_init_countries(by_activity_data, NULL, "FR2009", 
+                    recode_activities = TRUE, recode_locations = TRUE)
+
+# or as a shortcut:
+mtus_init_countries(by_activity_data, NULL, "FR2009", TRUE, TRUE)
+```
+
+Second, users can call `mtus_recode`, which loads custom CSV files listing codes and desired labels. The function requires that the user prepare a CSV file following a specific format. The file must contain two columns: the first column header must match the name of the MTUS variable to be renamed (e.g. MAIN, SEC, ELOC), and the second column header must be named LABEL, and the column must contain the list of corresponding human-readable labels. For example:
+
+``` {r sample csv}
+read.csv("example_data/codes_locations.csv")
+```
+
+In fact, when a user sets one of the `recode` options in `mtus_init_countries` to `TRUE`, the code effectively calls something like the following: `recoded_FR2009 <- mtus_recode(a_FR2009, "ELOC", "codes_locations.csv")`. Notice that unlike `mtus_init_countries` but like `mtus_init_raw_data`, `mtus_recode` *returns* a data object, so you must assign the output to a variable if you wish to store it. Alternatively, this also means that `mtus_recode` can be called within a tidyverse pipeline. 
+
+# Example plots using cleaned MTUS data
+These example functions are also built into the `cleantimeuse` library and suggest the kinds of visualization that the package facilitates.
+
+```{r sample plots, echo=FALSE}
+print("mtus_trip_density(FR2009")
+mtus_trip_density(FR2009)
+
+print("mtus_histogram(FR2009)")
+mtus_histogram(FR2009)
+
+print("mtus_density(FR2009)")
+mtus_density(FR2009)
+
+print("mtus_scatter(FR2009)")
+mtus_scatter(FR2009)
+
+#From the original R Markdown template:"Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot."
+```
+
+We can also use the mtus_density_ov() function to superimpose two countries' data. Suppose we want to compare French (2009) and Dutch (2005) trip densities depending on a person's work habit. First, load the Dutch data, and then create an overlayed plot:
+
+``` {r French/Dutch overlay, echo=FALSE}
+mtus_init_countries(by_activity_data, 
+                    by_person_data, 
+                    "NL2005")
+mtus_density_ov(FR2009, NL2005)
+```
+
+## Loading multiple countries
+Suppose we want to load Spain, Finland, Hungary, and Korea data for 2009. We can create a character list of the countries we want, and use mtus_init_countries(…) -- note that this is plural, rather than mtus_load_country(…). And unlike mtus_load_country, the function doesn't have a return object, so we don't need to create individual variables ahead of time.
+
+``` {r multiple countries}
+my_countries <- c("ES2009", "FI2009", "HU2009", "KR2009")
+mtus_init_countries(by_activity_data,
+                    by_person_data,
+                    my_countries)
+```
+
+We can now deploy these immediately, such as in these overlay graphs: first is Spain (black) and Finland (red), followed by Hungary (black) and Korea (red). 
+
+``` {r more overlays}
+mtus_density_ov(ES2009, FI2009)
+mtus_density_ov(HU2009, KR2009)
+```

@@ -1,1 +1,6 @@
 exportPattern("^[[:alpha:]]+")
+import(tidyverse)
+import(dplyr)
+import(survey)
+import(srvyr)
+import(ipumsr)

@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ipums-ddi-xslt.xsl"?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" version="2.5" ID="ddi2-138580_mtus_00017.dat-www.mtusdata.org">
+  <docDscr>
+    <citation>
+      <titlStmt>
+        <titl>Codebook for an MTUS Data Extract</titl>
+        <subTitl>DDI 2.5 metadata describing the extract file  'mtus_00017.dat'</subTitl>
+        <IDNo>ddi2-138580_mtus_00017.dat-www.mtusdata.org</IDNo>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="University of Minnesota">Minnesota Population Center</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer abbr="MPC" affiliation="University of Minnesota" role="Documentation">Minnesota Population Center</producer>
+        <prodDate date="2020-07-05">July 5, 2020</prodDate>
+        <prodPlac>Minnesota Population Center, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
+      </prodStmt>
+      <distStmt>
+        <contact affiliation="University of Minnesota" URI="http://pop.umn.edu">Minnesota Population Center</contact>
+      </distStmt>
+    </citation>
+  </docDscr>
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>User Extract mtus_00017.dat</titl>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="University of Minnesota">Minnesota Population Center</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer abbr="MPC" affiliation="University of Minnesota" role="Documentation">Minnesota Population Center</producer>
+        <prodDate date="2020-07-05">July 5, 2020</prodDate>
+        <prodPlac>Minnesota Population Center, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
+      </prodStmt>
+      <distStmt>
+        <contact affiliation="University of Minnesota" URI="http://pop.umn.edu">Minnesota Population Center</contact>
+      </distStmt>
+      <serStmt>
+        <serName abbr="mtus">IPUMS MTUS</serName>
+        <serInfo>DOI:10.18128/D062.V1.3</serInfo>
+      </serStmt>
+      <verStmt>
+        <version date="2020-07-05"/>
+      </verStmt>
+    </citation>
+    <stdyInfo>
+      <subject>
+        <topcClas vocab="IPUMS">Technical Person Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Core Demographic Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Weights Variables -- PERSON</topcClas>
+      </subject>
+      <sumDscr ID="sdatref-54">
+        <timePrd event="single" date="2009">2009</timePrd>
+        <nation abbr="fi">Finland</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-57">
+        <timePrd event="single" date="2009">2009</timePrd>
+        <nation abbr="fr">France</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-51">
+        <timePrd event="single" date="2009">2009</timePrd>
+        <nation abbr="hu">Hungary</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-31">
+        <timePrd event="single" date="2005">2005</timePrd>
+        <nation abbr="nl">Netherlands</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-58">
+        <timePrd event="single" date="2000">2000</timePrd>
+        <nation abbr="za">South Africa</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-65">
+        <timePrd event="single" date="2010">2010</timePrd>
+        <nation abbr="za">South Africa</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-61">
+        <timePrd event="single" date="2009">2009</timePrd>
+        <nation abbr="kr">South Korea</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-18">
+        <timePrd event="single" date="2009">2009</timePrd>
+        <nation abbr="es">Spain</nation>
+      </sumDscr>
+      <sumDscr ID="sdatref-53">
+        <timePrd event="single" date="2014">2014</timePrd>
+        <nation abbr="uk">United Kingdom</nation>
+      </sumDscr>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  ; regular size
+]]></notes>
+    </stdyInfo>
+    <dataAccs>
+      <useStmt>
+        <confDec required="no"><![CDATA[None]]></confDec>
+        <contact affiliation="Minnesota Population Center" URI="http://mtusdata.org/">MTUS</contact>
+        <citReq><![CDATA[Publications and research reports based on the MTUS database must cite it appropriately. The citation should include the following:
+
+Kimberly Fisher,  Jonathan Gershuny,  Sarah M. Flood,  Daniel Backman and Sandra L. Hofferth. Multinational Time Use Study Extract System: Version 1.3  [dataset]. Minneapolis, MN: IPUMS, 2019. https://doi.org/10.18128/D062.V1.3
+
+The licensing agreement for use of MTUS data requires that users supply us with the title and full citation for any publications, research reports, or educational materials making use of the data or documentation. Please add your citation to the IPUMS bibliography: http://bibliography.ipums.org/]]></citReq>
+        <conditions><![CDATA[Users of MTUS data must agree to abide by the conditions of use. A user's license is valid for one year and may be renewed.  Users must agree to the following conditions:
+
+(1) No fees may be charged for use or distribution of the data.  All persons are granted a limited license to use these data, but you may not charge a fee for the data if you distribute it to others.
+
+(2) Cite IPUMS appropriately.  For information on proper citation, refer to the citation requirement section of this DDI document.
+
+(3) Tell us about any work you do using the IPUMS.  Publications, research reports, or presentations making use of MTUS should be added to our Bibliography. Continued funding for the IPUMS depends on our ability to show our sponsor agencies that researchers are using the data for productive purposes.
+
+(4) Use it for GOOD -- never for EVIL.]]></conditions>
+        <disclaimer>The user of the data acknowledges that the original collector of the data, the authorized distributor of the data, and the relevant funding agency bear no responsibility for use of the data or for interpretations or inferences based upon such uses.</disclaimer>
+      </useStmt>
+    </dataAccs>
+    <notes><![CDATA[User-provided description:  July 5 by person]]></notes>
+    <notes>This extract is a revision of the user's previous extract, number 16.</notes>
+  </stdyDscr>
+  <fileDscr ID="ExtractData">
+    <fileTxt>
+      <fileName>mtus_00017.dat</fileName>
+      <fileCont>Microdata records</fileCont>
+      <fileStrc type="rectangular">
+      </fileStrc>
+      <fileType charset="ISO-8859-1">ISO-8859-1 data file</fileType>
+      <format>fixed length fields</format>
+      <filePlac>Minnesota Population Center, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</filePlac>
+    </fileTxt>
+  </fileDscr>
+  <dataDscr>
+    <var ID="SAMPLE" files="ExtractData" name="SAMPLE" intrvl="discrete" dcml="0">
+      <location StartPos="1" width="6" EndPos="6"/>
+      <labl>Sample</labl>
+      <txt><![CDATA[SAMPLE indicates the dataset to which the case belongs. Each sample receives a unique 6-digit code. The code is structured as follows:
+
+The first two digits are the codes used in COUNTRY
+The next four digits are the year used to identify the dataset
+
+
+Some surveys include data from more than one year (YEAR).]]></txt>
+      <catgry>
+        <catValu>UK2014</catValu>
+        <labl>United Kingdom 2014</labl>
+      </catgry>
+      <catgry>
+        <catValu>NL1990</catValu>
+        <labl>Netherlands 1990</labl>
+      </catgry>
+      <catgry>
+        <catValu>NL1985</catValu>
+        <labl>Netherlands 1985</labl>
+      </catgry>
+      <catgry>
+        <catValu>NL1980</catValu>
+        <labl>Netherlands 1980</labl>
+      </catgry>
+      <catgry>
+        <catValu>NL1975</catValu>
+        <labl>Netherlands 1975</labl>
+      </catgry>
+      <catgry>
+        <catValu>ES2009</catValu>
+        <labl>Spain 2009</labl>
+      </catgry>
+      <catgry>
+        <catValu>ES2002</catValu>
+        <labl>Spain 2002</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2012</catValu>
+        <labl>United States 2012</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2011</catValu>
+        <labl>United States 2011</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2010</catValu>
+        <labl>United States 2010</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2009</catValu>
+        <labl>United States 2009</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2008</catValu>
+        <labl>United States 2008</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2007</catValu>
+        <labl>United States 2007</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2006</catValu>
+        <labl>United States 2006</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2005</catValu>
+        <labl>United States 2005</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2004</catValu>
+        <labl>United States 2004</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2003</catValu>
+        <labl>United States 2003</labl>
+      </catgry>
+      <catgry>
+        <catValu>US1998</catValu>
+        <labl>United States 1998</labl>
+      </catgry>
+      <catgry>
+        <catValu>US1995</catValu>
+        <labl>United States 1995</labl>
+      </catgry>
+      <catgry>
+        <catValu>US1993</catValu>
+        <labl>United States 1993</labl>
+      </catgry>
+      <catgry>
+        <catValu>US1985</catValu>
+        <labl>United States 1985</labl>
+      </catgry>
+      <catgry>
+        <catValu>US1975</catValu>
+        <labl>United States 1975</labl>
+      </catgry>
+      <catgry>
+        <catValu>US1965</catValu>
+        <labl>United States 1965</labl>
+      </catgry>
+      <catgry>
+        <catValu>AT1992</catValu>
+        <labl>Austria 1992</labl>
+      </catgry>
+      <catgry>
+        <catValu>FR1985</catValu>
+        <labl>France 1985</labl>
+      </catgry>
+      <catgry>
+        <catValu>FR1998</catValu>
+        <labl>France 1998</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2015</catValu>
+        <labl>United States 2015</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2014</catValu>
+        <labl>United States 2014</labl>
+      </catgry>
+      <catgry>
+        <catValu>NL2005</catValu>
+        <labl>Netherlands 2005</labl>
+      </catgry>
+      <catgry>
+        <catValu>NL2000</catValu>
+        <labl>Netherlands 2000</labl>
+      </catgry>
+      <catgry>
+        <catValu>NL1995</catValu>
+        <labl>Netherlands 1995</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2013</catValu>
+        <labl>United States 2013</labl>
+      </catgry>
+      <catgry>
+        <catValu>IT2002</catValu>
+        <labl>Italy 2002</labl>
+      </catgry>
+      <catgry>
+        <catValu>CA2010</catValu>
+        <labl>Canada 2010</labl>
+      </catgry>
+      <catgry>
+        <catValu>FI1979</catValu>
+        <labl>Finland 1979</labl>
+      </catgry>
+      <catgry>
+        <catValu>UK2005</catValu>
+        <labl>United Kingdom 2005</labl>
+      </catgry>
+      <catgry>
+        <catValu>UK2000</catValu>
+        <labl>United Kingdom 2000</labl>
+      </catgry>
+      <catgry>
+        <catValu>UK1995</catValu>
+        <labl>United Kingdom 1995</labl>
+      </catgry>
+      <catgry>
+        <catValu>UK1987</catValu>
+        <labl>United Kingdom 1987</labl>
+      </catgry>
+      <catgry>
+        <catValu>UK1983</catValu>
+        <labl>United Kingdom 1983</labl>
+      </catgry>
+      <catgry>
+        <catValu>UK1974</catValu>
+        <labl>United Kingdom 1974</labl>
+      </catgry>
+      <catgry>
+        <catValu>IL1991</catValu>
+        <labl>Israel 1991</labl>
+      </catgry>
+      <catgry>
+        <catValu>BG2001</catValu>
+        <labl>Bulgaria 2001</labl>
+      </catgry>
+      <catgry>
+        <catValu>HU2009</catValu>
+        <labl>Hungary 2009</labl>
+      </catgry>
+      <catgry>
+        <catValu>HU1999</catValu>
+        <labl>Hungary 1999</labl>
+      </catgry>
+      <catgry>
+        <catValu>FI2009</catValu>
+        <labl>Finland 2009</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2018</catValu>
+        <labl>United States 2018</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2017</catValu>
+        <labl>United States 2017</labl>
+      </catgry>
+      <catgry>
+        <catValu>US2016</catValu>
+        <labl>United States 2016</labl>
+      </catgry>
+      <catgry>
+        <catValu>ZA2010</catValu>
+        <labl>South Africa 2010</labl>
+      </catgry>
+      <catgry>
+        <catValu>IT2008</catValu>
+        <labl>Italy 2008</labl>
+      </catgry>
+      <catgry>
+        <catValu>CA2005</catValu>
+        <labl>Canada 2005</labl>
+      </catgry>
+      <catgry>
+        <catValu>FR2009</catValu>
+        <labl>France 2009</labl>
+      </catgry>
+      <catgry>
+        <catValu>ZA2000</catValu>
+        <labl>South Africa 2000</labl>
+      </catgry>
+      <catgry>
+        <catValu>KR2009</catValu>
+        <labl>South Korea 2009</labl>
+      </catgry>
+      <catgry>
+        <catValu>CA2015</catValu>
+        <labl>Canada 2015</labl>
+      </catgry>
+      <catgry>
+        <catValu>KR2004</catValu>
+        <labl>South Korea 2004</labl>
+      </catgry>
+      <concept vocab="IPUMS">Technical Person Variables -- PERSON</concept>
+      <varFormat schema="other" type="character"/>
+    </var>
+    <var ID="IDENT" files="ExtractData" name="IDENT" intrvl="contin" dcml="0">
+      <location StartPos="7" width="9" EndPos="15"/>
+      <labl>Identifier</labl>
+      <txt><![CDATA[IDENT is an identifier to link person and activity records. It is unique within but not across surveys. Together IDENT and SAMPLE uniquely identify individuals.]]></txt>
+      <codInstr><![CDATA[This is a 9-digit numeric variable with 0 implied decimal places]]></codInstr>
+      <concept vocab="IPUMS">Technical Person Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="COUNTRY" files="ExtractData" name="COUNTRY" intrvl="discrete" dcml="0">
+      <location StartPos="16" width="2" EndPos="17"/>
+      <labl>Country or region of survey</labl>
+      <txt><![CDATA[COUNTRY gives the country in which the survey was conducted.]]></txt>
+      <catgry>
+        <catValu>AT</catValu>
+        <labl>Austria</labl>
+      </catgry>
+      <catgry>
+        <catValu>BG</catValu>
+        <labl>Bulgaria</labl>
+      </catgry>
+      <catgry>
+        <catValu>CA</catValu>
+        <labl>Canada</labl>
+      </catgry>
+      <catgry>
+        <catValu>ES</catValu>
+        <labl>Spain</labl>
+      </catgry>
+      <catgry>
+        <catValu>FI</catValu>
+        <labl>Finland</labl>
+      </catgry>
+      <catgry>
+        <catValu>FR</catValu>
+        <labl>France</labl>
+      </catgry>
+      <catgry>
+        <catValu>HU</catValu>
+        <labl>Hungary</labl>
+      </catgry>
+      <catgry>
+        <catValu>IL</catValu>
+        <labl>Israel</labl>
+      </catgry>
+      <catgry>
+        <catValu>IT</catValu>
+        <labl>Italy</labl>
+      </catgry>
+      <catgry>
+        <catValu>KR</catValu>
+        <labl>Korea</labl>
+      </catgry>
+      <catgry>
+        <catValu>NL</catValu>
+        <labl>Netherlands</labl>
+      </catgry>
+      <catgry>
+        <catValu>UK</catValu>
+        <labl>United Kingdom</labl>
+      </catgry>
+      <catgry>
+        <catValu>US</catValu>
+        <labl>USA</labl>
+      </catgry>
+      <catgry>
+        <catValu>ZA</catValu>
+        <labl>South Africa</labl>
+      </catgry>
+      <concept vocab="IPUMS">Technical Person Variables -- PERSON</concept>
+      <varFormat schema="other" type="character"/>
+    </var>
+    <var ID="HLDID" files="ExtractData" name="HLDID" intrvl="contin" dcml="0">
+      <location StartPos="18" width="18" EndPos="35"/>
+      <labl>Household id</labl>
+      <txt><![CDATA[HLDID is drawn from the original data and may be used to match MTUS data back to the original survey. 
+
+In samples where more than one household member completed a diary, HLDID uniquely identifies households, but not individuals. In surveys where only one person per household completed a diary, HLDID is the original value in the data. When no household identifier is included in the original data, HLDID=0]]></txt>
+      <codInstr><![CDATA[This is a 18-digit numeric variable with 0 implied decimal places]]></codInstr>
+      <concept vocab="IPUMS">Technical Person Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="PERSID" files="ExtractData" name="PERSID" intrvl="contin" dcml="0">
+      <location StartPos="36" width="17" EndPos="52"/>
+      <labl>Person/diarist identifier</labl>
+      <txt><![CDATA[PERSID uniquely identifies diarists within a given household.]]></txt>
+      <codInstr><![CDATA[This is a 17-digit numeric variable with 0 implied decimal places]]></codInstr>
+      <concept vocab="IPUMS">Technical Person Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="DIARY" files="ExtractData" name="DIARY" intrvl="discrete" dcml="0">
+      <location StartPos="53" width="2" EndPos="54"/>
+      <labl>Diary order</labl>
+      <txt><![CDATA[DIARY records the order in which diaries were completed. For samples in which only one diary was completed per respondent, all values are 1. For samples in which multiple diary days were completed per respondent, values start at 1 and increment by 1 until each diary has been numbered in the order in which they were completed.]]></txt>
+      <catgry>
+        <catValu>01</catValu>
+        <labl>1st diary day</labl>
+      </catgry>
+      <catgry>
+        <catValu>02</catValu>
+        <labl>2nd diary day</labl>
+      </catgry>
+      <catgry>
+        <catValu>03</catValu>
+        <labl>3rd diary day</labl>
+      </catgry>
+      <catgry>
+        <catValu>04</catValu>
+        <labl>4th diary day</labl>
+      </catgry>
+      <catgry>
+        <catValu>05</catValu>
+        <labl>5th diary day</labl>
+      </catgry>
+      <catgry>
+        <catValu>06</catValu>
+        <labl>6th diary day</labl>
+      </catgry>
+      <catgry>
+        <catValu>07</catValu>
+        <labl>7th diary day</labl>
+      </catgry>
+      <concept vocab="IPUMS">Technical Person Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="AGE" files="ExtractData" name="AGE" intrvl="contin" dcml="0">
+      <location StartPos="55" width="3" EndPos="57"/>
+      <labl>Age</labl>
+      <txt><![CDATA[AGE reports the age of respondents. 
+
+When age is recorded in categories, a mid-point of each age group is assigned, for example, 17 for age group 15-19. When surveys only included the year of birth of respondents, AGE was computed by subtracting the year of birth from the year of the survey. To protect the anonymity of the oldest respondents, age is topcoded. Users should note differences in topcodes across countries and years.]]></txt>
+      <codInstr><![CDATA[This is a 3-digit numeric variable with 0 implied decimal places]]></codInstr>
+      <concept vocab="IPUMS">Core Demographic Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="PROPWT" files="ExtractData" name="PROPWT" intrvl="contin" dcml="0">
+      <location StartPos="58" width="16" EndPos="73"/>
+      <labl>Proposed weight</labl>
+      <txt><![CDATA[PROPWT reports the proposed weight used when population and day combined weights need to be rescaled.
+
+The main MTUS weight, PROPWT, is calculated as follows:
+
+Begin from the original survey weight (deflated if the original weight was inflated). If there is no original weight, a population weight is constructed by dividing the percentage of the population expected to be in each age/sex (and in some cases employment status) group by the percentage of cases actually in that age/sex/employment status category in the sample data (expected/achieved).
+Create a good-diary inflation factor by dividing the total number of diaries collected in the survey by the number of good diaries (total diaries/good diaries).
+Create an interim weight that starts with the same value of the weight in step 1. Second, set the value of this interim weight to 0 for all low-quality diaries (NOWGHT=0). Third, multiply the interim weight by the good diary inflation factor created in step 2 for all cases (it will stay 0 for the bad diaries).
+Compute ASEWT - a sum of the weights for each age/sex/employment status group (across all days of the week).
+Compute two further sums: ASEDayWT -- a sum of weights for each age/sex/employment status) group separately for each day of the week, and also: ASEDayCASE - the sum of the number of cases in each age/sex/employment status) group for each day of the week. (This step differs from step 4 as the sums are calculated separately for each day of the week).
+An expected sum of weights is calculated (ESW) for each day of the week: ESW = ASEWT / 7 (divided by 7 as there are 7 days of the week).
+PROPWT = (ESW / ASEDayWT) / (ASEDayCASE / ASEDayWT)
+PROPWT should have a mean of 1, and should sum to the total number of diary cases. When the weight has been applied, the weighted frequency of the diaries by the days of the week should be evenly distributed (14.3% for each day). Similarly, each age/sex group should have an even distribution of diaries across each day of the week.
+
+
+Users who are interested in the original weight may refer to OCOMBWT.]]></txt>
+      <codInstr><![CDATA[
+PROPWT is a 16 digit numeric variable.]]></codInstr>
+      <concept vocab="IPUMS">Weights Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="ACT_WORK" files="ExtractData" name="ACT_WORK" intrvl="contin" dcml="0">
+      <location StartPos="74" width="4" EndPos="77"/>
+      <labl>ACT: Paid Work</labl>
+      <txt><![CDATA[ACT: Paid Work]]></txt>
+      <codInstr><![CDATA[This is a 4-digit numeric variable with 0 implied decimal places]]></codInstr>
+      <concept vocab="IPUMS">Time Use Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+  </dataDscr>
+</codeBook>

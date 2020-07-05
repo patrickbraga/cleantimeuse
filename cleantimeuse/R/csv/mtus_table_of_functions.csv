@@ -1,6 +1,0 @@
-﻿User_Facing,Internal
-**`mtus_init_raw_data`**,`all_core_variables_are_in`
-**`mtus_init_countries`**,
- ,`init_by_activity`<br>`recode_internal`<br>`mtus_load_country`<br>`check_valid_country`<br>`filter_to_country`<br>`count_trips`
-**`mtus_recode`**,
-**`def_survey_objects`**,

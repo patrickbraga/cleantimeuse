@@ -11,7 +11,7 @@ mtus_recode(input_data, which_column, codes_csv)
 
 \item{which_column}{String denoting the column that the user wishes to recode.}
 
-\item{codes_csv}{String with path to a csv file. The file must contain two columns: the first column header must match the name of the MTUS variable to be renamed (e.g. MAIN, SEC, ELOC), and the second column header must be named LABEL, and the column must contain the list of corresponding human-readable labels.}
+\item{codes_csv}{Either a data object or a string with path to a csv file. The file/table must contain two columns: the first column header must match the name of the MTUS variable to be renamed (e.g. MAIN, SEC, ELOC), and the second column header must be named LABEL, and the column must contain the list of corresponding human-readable labels.}
 }
 \value{
 Returns a version of input_data with user-designated labels replacing original IPUMS MTUS codes.

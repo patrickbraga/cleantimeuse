@@ -22,6 +22,8 @@ count_trips <- function(by_activity_data,
     # '63' | Travel to/from work
 
     # ELOC code 8 = travel
+    clean_data <- by_activity_data %>%
+        filter (MAIN %in% work_codes | ELOC == "8")
 
     # The clean_data and summary_data chunks of code are directly
     # derived from code originally written by Carole Voulgaris

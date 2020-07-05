@@ -4,7 +4,7 @@
 #'
 #' @param input_data The by-activity data object that the user has already loaded. This argument may be entered either as a string inq uotes or as a data object without quotes.
 #' @param which_column String denoting the column that the user wishes to recode.
-#' @param codes_csv String with path to a csv file. The file must contain two columns: the first column header must match the name of the MTUS variable to be renamed (e.g. MAIN, SEC, ELOC), and the second column header must be named LABEL, and the column must contain the list of corresponding human-readable labels.
+#' @param codes_csv Either a data object or a string with path to a csv file. The file/table must contain two columns: the first column header must match the name of the MTUS variable to be renamed (e.g. MAIN, SEC, ELOC), and the second column header must be named LABEL, and the column must contain the list of corresponding human-readable labels.
 #'
 #' @return Returns a version of input_data with user-designated labels replacing original IPUMS MTUS codes.
 
@@ -42,7 +42,14 @@ mtus_recode <- function(input_data, which_column, codes_csv) {
   }
 
   # load a csv file with equivalences
-  codes_list <- read.csv(codes_csv)
+  # check if codes_csv is a path to a CSV file or a data object
+  if (typeof(codes_csv) == "character"){
+    # if type is character, read from the CSV file
+    codes_list <- read.csv(codes_csv)
+  } else {
+    # if type is data object/list, simply assign that to codes_list
+    codes_list <- codes_csv
+  }
 
   if (which_column %in% names(input_data)) {
     # replace numeric codes with categorical labels for MAIN

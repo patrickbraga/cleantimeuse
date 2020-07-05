@@ -34,13 +34,15 @@ recode_internal <- function(input_data, activities = FALSE,
     if (activities == TRUE) {
         # load a csv file with equivalences
         print("recoding main activities")
+        data("codes_activities")
         input_data <- mtus_recode(input_data,
-            "MAIN", "csv/codes_activities.csv")
+            "MAIN", cleantimeuse::codes_activities)
 
         if ("SEC" %in% names(input_data)) {
             print("recoding secondary activities")
+            data("codes_sec")
             input_data <- mtus_recode(input_data,
-                "SEC", "csv/codes_sec.csv")
+                "SEC", cleantimeuse::codes_sec)
         } else {
             print("SEC column not found in data")
         }
@@ -48,11 +50,11 @@ recode_internal <- function(input_data, activities = FALSE,
 
     if (locations == TRUE) {
         print("recoding locations")
+        data("codes_locations")
         input_data <- mtus_recode(input_data,
-            "ELOC", "csv/codes_locations.csv")
+            "ELOC", cleantimeuse::codes_locations)
     }
 
-    View(input_data)
     # first check if user-inputted data has a SEC
     # column for secondary activities.  names(...)
     # creates a vector with all column names
