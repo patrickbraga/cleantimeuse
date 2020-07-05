@@ -3,7 +3,7 @@ The `cleantimeuse` R package was developed in June 2020 as part of Urban Stack, 
 
 To install the package, run the following command within R: `devtools::install_github("patrickbraga/cleantimeuse/cleantimeuse")`
 
-To view the tutorial directly in your browser, visit `http://raw.githack.com/patrickbraga/cleantimeuse/master/tutorial.html`
+To view the tutorial directly in your browser, visit http://raw.githack.com/patrickbraga/cleantimeuse/master/tutorial.html
 
 The data in the sample_data folder were downloaded from IPUMS MTUS and are being released with this package for the sole purpose of illustrating how to use cleantimeuse in the tutorial file. The full citation for the data are:
 
