@@ -1,5 +1,5 @@
 # cleantimeuse
-The `cleantimeuse` R package was developed in June 2020 as part of Urban Stack, a research group within the Laboratory for Design Technologies at the Harvard University Graduate School of Design. The aim of the package is to facilitate using time use survey data to study transport and travel behavior. It cleans and prepares data retrieved from the Multinational Time Use Study Extract System.
+The `cleantimeuse` R package was developed in June 2020 as part of Urban Stack, a research group within the Laboratory for Design Technologies at the Harvard University Graduate School of Design. The aim of the package is to facilitate using time use survey data to study transport and travel behavior. It cleans and prepares data retrieved from the Multinational Time Use Study Extract System. The code was written under the supervision of Carole Voulgaris (Department of Urban Planning and Design), who wrote original data-cleaning code which this package extends.
 
 To install the package, run the following command within R: `devtools::install_github("patrickbraga/cleantimeuse/cleantimeuse")`
 
